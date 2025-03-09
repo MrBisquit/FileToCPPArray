@@ -121,8 +121,24 @@
                 if (i != bytes.Length - 1) str += ", ";
                 if (current == 15) { str += "\n\t"; current = 0; }
                 current++;
+                if(i % 1000 == 0) DrawProgress((double)((double)i / (double)bytes.Length) * (double)100);
             }
+            DrawProgress(100.0);
             return str;
+        }
+
+        static void DrawProgress(double progress)
+        {
+            int left = (int)(Math.Round(progress) / 2);
+            int right = (int)(50 - left);
+            Console.Write("\r[");
+            ConsoleColor currentBg = Console.BackgroundColor;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(new string(' ', left));
+            Console.BackgroundColor = currentBg;
+            Console.Write(new string(' ', right));
+            Console.Write($"] {Math.Round(progress, 2).ToString().PadLeft(6)}% ");
+            Console.CursorLeft -= 1;
         }
     }
 }
