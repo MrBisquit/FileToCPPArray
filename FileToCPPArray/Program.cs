@@ -1,7 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Xml.Linq;
-
-namespace FileToCPPArray
+﻿namespace FileToCPPArray
 {
     internal class Program
     {
